@@ -229,10 +229,14 @@ validator.validate('email', 'foo@bar'); // false
 
 You can validate multiple values at the same time using `validateAll(obj)`:
 ```js
-validator.validateAll({ email: 'foo@bar.com', name: 'John Snow' });
+validator.validateAll({ email: 'foo@bar.com', name: 'John Snow' }).then(() => {
+  // success stuff.
+}).catch(() => {
+  // validation failed stuff
+});
 ```
 
-Returns true if all values passed validation, false if at least one value failed validation. will return a `Promise` if at least one field validation rule returned a `Promise` which is also resolved to a boolean. The ErrorBag will be populated with any errors encountered. You can access the `errorBag` property directly or using `getErrors()`.
+Returns a `Promise` The ErrorBag will be populated with any errors encountered, Throws if any error has been encountered. You can access the `errorBag` property directly or using `getErrors()`.
 
 ```js
 var errorBag = validator.errorBag;

@@ -49,10 +49,15 @@ Validator.setLocale('ar');
 <p>In the <a href="https://github.com/logaretm/vee-validate/tree/master/locale"><code>locale</code></a> directory of this plugin, is a collection of localized files. If you can't find your locale, you could help this plugin by contributing a localized version to the <a href="https://github.com/logaretm/vee-validate">repo</a>. I will happily accept it.</p>
 <p>You can import those locales like this:</p>
 <pre><code class="highlight-js">import ar from 'vee-validate/dist/locale/ar';
-import { Validator } from 'vee-validate';
+import VeeValidate, { Validator } from 'vee-validate';
 
 // Add locale helper.
 Validator.addLocale(ar);
+
+// Install the Plugin and set the locale.
+Vue.use(VeeValidate, {
+  locale: 'ar'
+});
 </code></pre>
 <p>You must note that the locale files export the following object structure:</p>
 <pre><code class="highlight-js">export default {

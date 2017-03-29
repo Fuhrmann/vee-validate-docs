@@ -71,10 +71,15 @@ You can import those locales like this:
 
 ```js
 import ar from 'vee-validate/dist/locale/ar';
-import { Validator } from 'vee-validate';
+import VeeValidate, { Validator } from 'vee-validate';
 
 // Add locale helper.
 Validator.addLocale(ar);
+
+// Install the Plugin and set the locale.
+Vue.use(VeeValidate, {
+  locale: 'ar'
+});
 ```
 
 You must note that the locale files export the following object structure:

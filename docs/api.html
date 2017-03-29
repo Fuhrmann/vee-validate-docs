@@ -194,9 +194,13 @@ validator.validate('email', 'foo@bar'); // false
 <p>Most validators return a Boolean, however some validators (very few) return a <code>Promise</code> The validator is aware of this and will only return a Promise if at least one validation yields a promise. the promise is resolved to boolean which you can later chain to check your fields.</p>
 </blockquote>
 <p>You can validate multiple values at the same time using <code>validateAll(obj)</code>:</p>
-<pre><code class="highlight-js">validator.validateAll({ email: 'foo@bar.com', name: 'John Snow' });
+<pre><code class="highlight-js">validator.validateAll({ email: 'foo@bar.com', name: 'John Snow' }).then(() =&gt; {
+  // success stuff.
+}).catch(() =&gt; {
+  // validation failed stuff
+});
 </code></pre>
-<p>Returns true if all values passed validation, false if at least one value failed validation. will return a <code>Promise</code> if at least one field validation rule returned a <code>Promise</code> which is also resolved to a boolean. The ErrorBag will be populated with any errors encountered. You can access the <code>errorBag</code> property directly or using <code>getErrors()</code>.</p>
+<p>Returns a <code>Promise</code> The ErrorBag will be populated with any errors encountered, Throws if any error has been encountered. You can access the <code>errorBag</code> property directly or using <code>getErrors()</code>.</p>
 <pre><code class="highlight-js">var errorBag = validator.errorBag;
 // or
 var errorBag = validator.getErrors();
