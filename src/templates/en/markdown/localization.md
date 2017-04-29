@@ -52,7 +52,7 @@ You can switch the local of all validators by calling `setLocale` on any instanc
 // Inside a component.
 this.$validator.setLocale('ar');
 
-import { Validator } from 'vee-valdiate';
+import { Validator } from 'vee-validate';
 
 // Also avaiable on the prototype.
 Validator.setLocale('ar');
